@@ -1,0 +1,145 @@
+{
+  "refDate": "2025-09-15",
+  "items": [
+    {
+      "name": "NVIDIA",
+      "ticker": "NVDA",
+      "market": "NASDAQ",
+      "marketCapUSD": 3100000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-NVDA/"
+    },
+    {
+      "name": "Broadcom",
+      "ticker": "AVGO",
+      "market": "NASDAQ",
+      "marketCapUSD": 640000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-AVGO/"
+    },
+    {
+      "name": "TSMC",
+      "ticker": "TSM",
+      "market": "NYSE",
+      "marketCapUSD": 520000000000,
+      "source": "https://www.tradingview.com/symbols/NYSE-TSM/"
+    },
+    {
+      "name": "ASML",
+      "ticker": "ASML",
+      "market": "NASDAQ",
+      "marketCapUSD": 420000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-ASML/"
+    },
+    {
+      "name": "Samsung Electronics",
+      "ticker": "005930",
+      "market": "KRX",
+      "marketCapUSD": 380000000000,
+      "source": "https://www.tradingview.com/symbols/KRX-005930/"
+    },
+    {
+      "name": "AMD",
+      "ticker": "AMD",
+      "market": "NASDAQ",
+      "marketCapUSD": 300000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-AMD/"
+    },
+    {
+      "name": "Applied Materials",
+      "ticker": "AMAT",
+      "market": "NASDAQ",
+      "marketCapUSD": 165000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-AMAT/"
+    },
+    {
+      "name": "Intel",
+      "ticker": "INTC",
+      "market": "NASDAQ",
+      "marketCapUSD": 175000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-INTC/"
+    },
+    {
+      "name": "Texas Instruments",
+      "ticker": "TXN",
+      "market": "NASDAQ",
+      "marketCapUSD": 158000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-TXN/"
+    },
+    {
+      "name": "Micron",
+      "ticker": "MU",
+      "market": "NASDAQ",
+      "marketCapUSD": 150000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-MU/"
+    },
+    {
+      "name": "Lam Research",
+      "ticker": "LRCX",
+      "market": "NASDAQ",
+      "marketCapUSD": 125000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-LRCX/"
+    },
+    {
+      "name": "KLA",
+      "ticker": "KLAC",
+      "market": "NASDAQ",
+      "marketCapUSD": 115000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-KLAC/"
+    },
+    {
+      "name": "SK hynix",
+      "ticker": "000660",
+      "market": "KRX",
+      "marketCapUSD": 118000000000,
+      "source": "https://www.tradingview.com/symbols/KRX-000660/"
+    },
+    {
+      "name": "Analog Devices",
+      "ticker": "ADI",
+      "market": "NASDAQ",
+      "marketCapUSD": 110000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-ADI/"
+    },
+    {
+      "name": "Tokyo Electron",
+      "ticker": "8035",
+      "market": "TSE",
+      "marketCapUSD": 115000000000,
+      "source": "https://www.tradingview.com/symbols/TSE-8035/"
+    },
+    {
+      "name": "NXP Semiconductors",
+      "ticker": "NXPI",
+      "market": "NASDAQ",
+      "marketCapUSD": 73000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-NXPI/"
+    },
+    {
+      "name": "MediaTek",
+      "ticker": "2454",
+      "market": "TWSE",
+      "marketCapUSD": 58000000000,
+      "source": "https://www.tradingview.com/symbols/TWSE-2454/"
+    },
+    {
+      "name": "STMicroelectronics",
+      "ticker": "STM",
+      "market": "NYSE",
+      "marketCapUSD": 44000000000,
+      "source": "https://www.tradingview.com/symbols/NYSE-STM/"
+    },
+    {
+      "name": "Infineon",
+      "ticker": "IFX",
+      "market": "XETR",
+      "marketCapUSD": 54000000000,
+      "source": "https://www.tradingview.com/symbols/XETR-IFX/"
+    },
+    {
+      "name": "ON Semiconductor",
+      "ticker": "ON",
+      "market": "NASDAQ",
+      "marketCapUSD": 34000000000,
+      "source": "https://www.tradingview.com/symbols/NASDAQ-ON/"
+    }
+  ]
+}
