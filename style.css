@@ -155,7 +155,6 @@ footer {
   .tv-grid { grid-template-columns: 1fr; }
 }
 
-/* --- 국기 아이콘 추가 --- */
 .market-cell {
   display: inline-flex;
   align-items: center;

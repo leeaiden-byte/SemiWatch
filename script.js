@@ -69,24 +69,52 @@ function renderArticles(){
   `).join("");
 }
 
-// ---- 시장 스냅샷 ----
 const SNAP_INDEX_URL = "data/semicap_index.json";
 let snapshotSortDesc = true;
 let currentSnapshotFile = null;
 let currentSnapshot = { refDate: "—", items: [] };
 
-// 거래소 → 국가코드 매핑 (국기용)
 const MARKET_FLAG = {
   "NASDAQ": "us",
   "NYSE": "us",
   "AMEX": "us",
+
   "KRX": "kr",
   "KOSDAQ": "kr",
-  "TYO": "jp",
+
   "TSE": "jp",
-  "SSE": "cn",
-  "SZSE": "cn",
-  "HKEX": "hk",
+  "TYO": "jp",
+
+  "TWSE": "tw",
+
+  "XETR": "de",
+  "XETRA": "de",
+  "FWB": "de"
+};
+
+const COMPANY_FLAG = {
+  "TSM": "tw",                          // TSMC
+  "Taiwan Semiconductor Manufacturing Co.": "tw",
+  "MediaTek": "tw",
+  "2454": "tw",
+
+  "Samsung Electronics": "kr",
+  "005930": "kr",
+  "SK hynix": "kr",
+  "000660": "kr",
+
+  "ASML": "nl",
+  "NXP Semiconductors": "nl",
+  "NXPI": "nl",
+
+  "Tokyo Electron": "jp",
+  "8035": "jp",
+
+  "Infineon": "de",
+  "IFX": "de",
+
+  "STMicroelectronics": "fr",
+  "STM": "fr"
 };
 
 const fmtUsd = n => {
@@ -110,6 +138,19 @@ async function loadSnapshotFile(file){
   return res.json();
 }
 
+function getFlagForRow(row){
+  if (row.ticker && COMPANY_FLAG[row.ticker]) {
+    return COMPANY_FLAG[row.ticker];
+  }
+  if (row.name && COMPANY_FLAG[row.name]) {
+    return COMPANY_FLAG[row.name];
+  }
+  if (row.market && MARKET_FLAG[row.market]) {
+    return MARKET_FLAG[row.market];
+  }
+  return null;
+}
+
 function renderSnapshotTable(){
   const tbody = document.querySelector("#snapshotTable tbody");
   const dateEl = document.getElementById("snapshotDate");
@@ -122,9 +163,9 @@ function renderSnapshotTable(){
 
   tbody.innerHTML = list.map((row, idx) => {
     const market = row.market || "—";
-    const countryCode = MARKET_FLAG[market];
-    const flagImg = countryCode
-      ? `<img src="https://flagcdn.com/16x12/${countryCode}.png" alt="${countryCode}" class="flag-icon" />`
+    const flagCode = getFlagForRow(row);
+    const flagImg = flagCode
+      ? `<img src="https://flagcdn.com/16x12/${flagCode}.png" alt="${flagCode}" class="flag-icon" />`
       : "";
 
     return `
@@ -159,6 +200,7 @@ function wireSnapshotUI(snapshotList){
     currentSnapshot = data;
     renderSnapshotTable();
   });
+
   sel.dispatchEvent(new Event("change"));
 }
 
