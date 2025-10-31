@@ -93,26 +93,34 @@ const MARKET_FLAG = {
 };
 
 const COMPANY_FLAG = {
-  "TSM": "tw",                          // TSMC
-  "Taiwan Semiconductor Manufacturing Co.": "tw",
+  "TSM": "tw",
+  "TAIWAN SEMICONDUCTOR MANUFACTURING CO.": "tw",
+  "MEDIA TEK": "tw",          
   "MediaTek": "tw",
   "2454": "tw",
 
+  "SAMSUNG ELECTRONICS": "kr",
   "Samsung Electronics": "kr",
   "005930": "kr",
+  "SK HYNIX": "kr",
   "SK hynix": "kr",
   "000660": "kr",
 
   "ASML": "nl",
-  "NXP Semiconductors": "nl",
+  "ASML HOLDING N.V.": "nl",
+  "NXP SEMICONDUCTORS": "nl",
   "NXPI": "nl",
 
+  "TOKYO ELECTRON": "jp",
   "Tokyo Electron": "jp",
   "8035": "jp",
 
+
+  "INFINEON": "de",
   "Infineon": "de",
   "IFX": "de",
 
+  "STMICROELECTRONICS": "fr",
   "STMicroelectronics": "fr",
   "STM": "fr"
 };
@@ -139,14 +147,20 @@ async function loadSnapshotFile(file){
 }
 
 function getFlagForRow(row){
-  if (row.ticker && COMPANY_FLAG[row.ticker]) {
-    return COMPANY_FLAG[row.ticker];
+  const rawTicker = (row.ticker || "").trim();
+  const rawName = (row.name || "").trim();
+  const ticker = rawTicker.toUpperCase();
+  const nameUpper = rawName.toUpperCase();
+
+  if (ticker && COMPANY_FLAG[ticker]) {
+    return COMPANY_FLAG[ticker];
   }
-  if (row.name && COMPANY_FLAG[row.name]) {
-    return COMPANY_FLAG[row.name];
+  if (nameUpper && COMPANY_FLAG[nameUpper]) {
+    return COMPANY_FLAG[nameUpper];
   }
-  if (row.market && MARKET_FLAG[row.market]) {
-    return MARKET_FLAG[row.market];
+  const market = (row.market || "").trim();
+  if (market && MARKET_FLAG[market]) {
+    return MARKET_FLAG[market];
   }
   return null;
 }
@@ -216,7 +230,6 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   });
 
   searchInput.addEventListener("input", renderArticles);
-
   try {
     const list = await loadSnapshotList();
     if (!list.length) throw new Error("No snapshots found");
