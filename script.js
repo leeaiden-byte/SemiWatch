@@ -69,10 +69,25 @@ function renderArticles(){
   `).join("");
 }
 
+// ---- 시장 스냅샷 ----
 const SNAP_INDEX_URL = "data/semicap_index.json";
 let snapshotSortDesc = true;
 let currentSnapshotFile = null;
 let currentSnapshot = { refDate: "—", items: [] };
+
+// 거래소 → 국가코드 매핑 (국기용)
+const MARKET_FLAG = {
+  "NASDAQ": "us",
+  "NYSE": "us",
+  "AMEX": "us",
+  "KRX": "kr",
+  "KOSDAQ": "kr",
+  "TYO": "jp",
+  "TSE": "jp",
+  "SSE": "cn",
+  "SZSE": "cn",
+  "HKEX": "hk",
+};
 
 const fmtUsd = n => {
   if (n == null || isNaN(n)) return "—";
@@ -105,16 +120,29 @@ function renderSnapshotTable(){
                       : (a.marketCapUSD ?? 0) - (b.marketCapUSD ?? 0)
   );
 
-  tbody.innerHTML = list.map((row, idx)=>`
-    <tr>
-      <td>${idx+1}</td>
-      <td>${row.name}</td>
-      <td>${row.ticker || "—"}</td>
-      <td>${row.market || "—"}</td>
-      <td class="right">${fmtUsd(row.marketCapUSD)}</td>
-      <td>${row.source ? `<a href="${row.source}" target="_blank" rel="noopener">link</a>` : "—"}</td>
-    </tr>
-  `).join("");
+  tbody.innerHTML = list.map((row, idx) => {
+    const market = row.market || "—";
+    const countryCode = MARKET_FLAG[market];
+    const flagImg = countryCode
+      ? `<img src="https://flagcdn.com/16x12/${countryCode}.png" alt="${countryCode}" class="flag-icon" />`
+      : "";
+
+    return `
+      <tr>
+        <td>${idx+1}</td>
+        <td>${row.name}</td>
+        <td>${row.ticker || "—"}</td>
+        <td>
+          <span class="market-cell">
+            ${flagImg}
+            <span>${market}</span>
+          </span>
+        </td>
+        <td class="right">${fmtUsd(row.marketCapUSD)}</td>
+        <td>${row.source ? `<a href="${row.source}" target="_blank" rel="noopener">link</a>` : "—"}</td>
+      </tr>
+    `;
+  }).join("");
 }
 
 function wireSnapshotUI(snapshotList){
